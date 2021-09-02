@@ -25,31 +25,32 @@ class ProductList(APIView):
     def get(self, request):
 
         products = Product.objects.values()
-        categories_to_product = Product.objects.annotate(num_products=Count('name'))
+        
+        # categories_to_product = ProductCategory.objects.annotate(num_products=Count('name'))
         
         # category = [cat for cat in categories_to_product]
         # print('===cattttt===')
         # print(category)
         # product_in_category = Product.objects.filter(product_category__name=category)
 
-        for category in categories_to_product:
-            category_item = category
-            print("  category   ")
-            print(category_item)
+        # for category in categories_to_product:
+        #     category_item = category
+        #     print("  category   ")
+        #     print(category_item)
             
-            product_in_category = Product.objects.filter(product_category__name=category)
-            for product in product_in_category:
-                product_item = product
-                print("=====product_item====")
-                print(product_item)
+        #     product_in_category = Product.objects.filter(product_category__name=category)
+        #     for product in product_in_category:
+        #         product_item = product
+        #         print("=====product_item====")
+        #         print(product_item)
 
-            # print("Count")
-            # print(category.num_products)
+        #     print("Count")
+        #     print(category.num_products)
         
 
         my_dict={
-            'products':product_item,
-            'categories':category_item
+            'products':products,
+            # 'categories':category_item
             }
         print("My dict========")
         print(my_dict)
@@ -66,8 +67,8 @@ class ProductList(APIView):
 
 
 #Add product
-class AddProductView(CreateView):
+class ProductCreateView(CreateView):
     model = Product
-    
     form_class = AddForm
+    template_name = 'product/product_create.html'
 

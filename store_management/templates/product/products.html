@@ -17,16 +17,18 @@
                 </tr>
               </thead>
               <tbody>
+                {% for product in products %}
                 <tr class="border-bottom border-200">
                   <td>
                     <div class="d-flex align-items-center position-relative"><img class="rounded-1 border border-200" src="assets/img/products/12.png" width="60" alt="" />
                       <div class="flex-1 ms-3">
-                        <h6 class="mb-1 fw-semi-bold"><a class="text-dark stretched-link" href="#!">{{ categories }}</a></h6>
-                        <p class="fw-semi-bold mb-0 text-500">{{ categories.num_products }}</p>
+                        <h6 class="mb-1 fw-semi-bold"><a class="text-dark stretched-link" href="#!">category here</a></h6>
+                        <p class="fw-semi-bold mb-0 text-500">Count</p>
                       </div>
                     </div>
+                    
                   </td>
-                  <td class="align-middle text-end fw-semi-bold">{{ products }}</td>
+                  <td class="align-middle text-end fw-semi-bold">{{ product.name }}</td>
                   <td class="align-middle pe-card">
                     <div class="d-flex align-items-center">
                       <div class="progress me-3 rounded-3 bg-200" style="height: 5px;width:80px">
@@ -36,8 +38,8 @@
                     </div>
                   </td>
                 </tr>
-          
               </tbody>
+              {% endfor %}
             </table>
           </div>
         </div>
