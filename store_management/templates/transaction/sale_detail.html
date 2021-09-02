@@ -1,0 +1,8 @@
+{% load rest_framework %}
+
+<h4>{{ sale.product_sold }}</h4>
+<form action="{% url 'sale-detail' pk=sale.pk %}" data-method="POST">
+    {% csrf_token %}
+    {% render_form serializer %}
+    <input type="submit" value="save">
+</form>
