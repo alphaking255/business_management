@@ -3,7 +3,7 @@ from transaction.models import Sales, Purchases
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404, render
 from rest_framework.views import APIView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from rest_framework.renderers import TemplateHTMLRenderer
 
 from transaction.serializers import SalesSerializers, PurchasesSerializers
@@ -45,6 +45,15 @@ class SaleCreateView(CreateView):
     template_name = 'transaction/sale_create.html'
     
 
+class SaleUpdateView(UpdateView):
+    model = Sales
+    fields = ['product_sold','price','quantity']
+    template_name = 'transaction/sales.html'
+
+
+class SaleDeleteView(DeleteView):
+    model = Sales
+    success_url = 'transaction:delete-sales'
 
 
 #Purchases Views
