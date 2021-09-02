@@ -1,0 +1,28 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block add_sales %}
+
+<div class="card mb-3">
+    <div class="card-header">
+        <div class="row flex-between-end">
+        <div class="col-auto flex-lg-grow-1 flex-lg-basis-0 align-self-center">
+            <h5 class="mb-0" data-anchor="data-anchor">Add Sales</h5>
+        </div>
+        </div>
+    </div>
+    <div class="card-body bg-light">
+            <form class="row g-3 needs-validation" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in form %}
+            <div class="col-md-4"><label class="form-label" for="validationCustom01">Sale Name</label>
+                <input class="form-control" > {{ field }}
+            </div>
+            
+            {% endfor %}
+            <div class="col-md-6"><button class="btn btn-primary" type="submit">Add Sales</button></div>
+            </form>
+        </div>
+    </div>
+
+{% endblock add_sales %}

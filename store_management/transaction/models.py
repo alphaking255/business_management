@@ -2,6 +2,7 @@ from django.db import models
 from product.models import Product, ProductCategory
 from decimal import Decimal
 from django.db.models import F, Sum
+from django.urls import reverse
 
 class Sales(models.Model):
     id = models.AutoField(primary_key = True)
@@ -17,6 +18,9 @@ class Sales(models.Model):
 
     def __str__(self):
         return self.product_sold
+
+    def get_absolute_url(self):
+        return reverse('sales')
 
 
 class Purchases(models.Model):

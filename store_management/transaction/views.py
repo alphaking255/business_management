@@ -1,7 +1,9 @@
+from .forms import AddSale
 from transaction.models import Sales, Purchases
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404, render
 from rest_framework.views import APIView
+from django.views.generic.edit import CreateView
 from rest_framework.renderers import TemplateHTMLRenderer
 
 from transaction.serializers import SalesSerializers, PurchasesSerializers
@@ -35,6 +37,14 @@ class SalesDetail(APIView):
             return Response({'serializer': serializer, 'sale': sale})
         serializer.save()
         return redirect('sales')
+
+class SaleCreateView(CreateView):
+    model = Sales
+    form = AddSale
+    fields = ['product_sold','price','quantity']
+    template_name = 'transaction/sale_create.html'
+    
+
 
 
 #Purchases Views
