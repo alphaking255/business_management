@@ -12,18 +12,18 @@
         </div>
     </div>
     <div class="card-body bg-light">
+        {% if form %}
             <form class="row g-3 needs-validation" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                {% for field in form %}
             <div class="col-md-4"><label class="form-label" for="validationCustom01">Product Name</label>
-                <input class="form-control" > {{ field }}
+                <input class="form-control" {{ form.name }}>
             </div>
             
-            <!-- <div class="col-md-3"><label class="form-label" for="validationCustom04">Category</label>
-                <select class="form-select" id="validationCustom04" required=""  ></select>{{ field }} -->
-            {% endfor %}
+            <div class="col-md-3"><label class="form-label" for="validationCustom04">Category</label>
+                <select class="form-select" {{ form.product_category }} ></select>
             <div class="col-md-6"><button class="btn btn-primary" type="submit">Add</button></div>
             </form>
+        {% endif %}
         </div>
     </div>
     {% endblock add_product %}

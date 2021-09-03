@@ -40,8 +40,8 @@ class SalesDetail(APIView):
 
 class SaleCreateView(CreateView):
     model = Sales
-    form = AddSale
-    fields = ['product_sold','price','quantity']
+    form_class = AddSale
+    # fields = ['product_sold','price','quantity']
     template_name = 'transaction/sale_create.html'
     
 

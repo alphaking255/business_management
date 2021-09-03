@@ -1,5 +1,5 @@
-{% extends 'store/base.html' %}
-{% load static %}
+{% extends "store/base.html" %}
+{% load widget_tweaks %}
 
 {% block add_sales %}
 
@@ -12,17 +12,23 @@
         </div>
     </div>
     <div class="card-body bg-light">
-            <form class="row g-3 needs-validation" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                {% for field in form %}
-            <div class="col-md-4"><label class="form-label" for="validationCustom01">Sale Name</label>
-                <input class="form-control" > {{ field }}
-            </div>
-            
-            {% endfor %}
-            <div class="col-md-6"><button class="btn btn-primary" type="submit">Add Sales</button></div>
-            </form>
+        <form class="row g-3 needs-validation" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+        
+        <div class="col-md-3"><label class="form-label" for="validationCustom04">Product Sold</label>
+            <select class="form-select" {{ form.product_sold }} ></select>
+
+        <div class="col-md-4"><label class="form-label" for="validationCustom01">Price</label>
+            <input class="form-control" {{ form.price }}> 
         </div>
+        
+        <div class="col-md-4"><label class="form-label" for="validationCustom01">Quantity</label>
+            <input class="form-control" {{ form.quantity }}> 
+        </div>
+        
+        <div class="col-md-6"><button class="btn btn-primary" type="submit">Add Sales</button></div>
+        </form>
     </div>
+</div>
 
 {% endblock add_sales %}
