@@ -68,9 +68,6 @@
             <div class="navbar-vertical-content scrollbar">
               <ul class="navbar-nav flex-column mb-3" id="navbarVerticalNav">
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'home' %}" role="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="dashboard">
-                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-chart-pie"></span></span><span class="nav-link-text ps-1">Dashboard</span></div>
-                  </a>
                   <ul class="nav collapse show" id="dashboard">
                     <li class="nav-item"><a class="nav-link" href="{% url 'add_product' %}">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Add Product</span></div>
@@ -80,8 +77,8 @@
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">View Products</span></div>
                       </a><!-- more inner pages-->
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'sales' %}">
-                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Transactions</span></div>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'stock' %}">
+                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Stock</span></div>
                       </a><!-- more inner pages-->
                     </li>
                 </li>
@@ -131,24 +128,20 @@
             }
           </script>
           {% block homepage %} {% endblock homepage %}
-          {% block sales %} {% endblock sales %}
+          {% block stock_products %} {% endblock stock_products %}
           
                 
-          {% block category %} {% endblock category%}
-     
-            <!--Total sales starts here-->
-          {% block total_sales %} {% endblock total_sales%}
+          {% block add_category %} {% endblock add_category%}
+          {% block category %} {% endblock category %}
 
-          <div class="row g-0">
-            <!--Best selling products starts here-->
+          {% block add_product %} {% endblock add_product %}
+
+
             {% block products %} {% endblock products %}
             
-            {% block add_product %} {% endblock add_product %}
-
-            {% block add_sales %} {% endblock add_sales %}
+            {% block add_stock %} {% endblock add_stock %}
 
 
-          </div>
           <footer class="footer">
             <div class="row g-0 justify-content-between fs--1 mt-4 mb-3">
               <div class="col-12 col-sm-auto text-center">
