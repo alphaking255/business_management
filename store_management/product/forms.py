@@ -11,4 +11,3 @@ class AddProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = ['name','product_category']
-

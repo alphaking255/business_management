@@ -1,0 +1,38 @@
+{% extends "store/base.html" %}
+
+{% load widget_tweaks %}
+
+
+
+
+{% block add_category %}
+<div class="card mb-3">
+    <div class="card-header">
+        <div class="row flex-between-end">
+        <div class="col-auto flex-lg-grow-1 flex-lg-basis-0 align-self-center">
+            <h5 class="mb-0" data-anchor="data-anchor">Add Product</h5>
+        </div>
+        </div>
+    </div>
+    <div class="card-body bg-light">
+        {% if form %}
+            <form class="row g-3 needs-validation" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                <div class="col-md-4">
+                    <label class="form-label" >Product Category</label>
+                    <select class="form-select" {{ form.product_category }} ></select>
+                </div>
+                
+                <div class="col-md-3">
+                    <label class="form-label" >Product Name</label>
+                    <input class="form-control" {{ form.name }} >
+                </div>
+
+                <div class="col-md-6">
+                    <button class="btn btn-primary" type="submit">Add</button>
+                </div>
+            </form>
+        {% endif %}
+        </div>
+    </div>
+    {% endblock add_category %}

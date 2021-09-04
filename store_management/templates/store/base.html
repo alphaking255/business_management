@@ -69,7 +69,10 @@
               <ul class="navbar-nav flex-column mb-3" id="navbarVerticalNav">
                 <li class="nav-item">
                   <ul class="nav collapse show" id="dashboard">
-                    <li class="nav-item"><a class="nav-link" href="{% url 'add_product' %}">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'categories' %}">
+                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Product Categories</span></div>
+                      </a>
+                      <li class="nav-item"><a class="nav-link" href="{% url 'add_product' %}">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Add Product</span></div>
                       </a>
                     </li>
@@ -132,9 +135,11 @@
           
                 
           {% block add_category %} {% endblock add_category%}
+
           {% block category %} {% endblock category %}
 
           {% block add_product %} {% endblock add_product %}
+          {% block delete_category %} {% endblock delete_category %}
 
 
             {% block products %} {% endblock products %}

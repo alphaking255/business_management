@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
+from django.views.generic.detail import DetailView
 from rest_framework import generics, status, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -14,8 +15,6 @@ from .forms import AddProductForm, AddCategoryForm
 
 from .models import ProductCategory, Product
 from .serializers import ProductSerializer, ProductCategorySerializer
-
-
 
 
 
@@ -44,6 +43,13 @@ class ProductList(APIView):
         return Response(my_dict)
 
 
+class ProductUpdate(UpdateView):
+    model = Product
+    template_name = 'product/product_edit.html'
+    form_class = AddProductForm
+    success_url = reverse_lazy('product:products')
+
+
 #Add Product Category
 class CategoryCreateView(CreateView):
     model = ProductCategory
@@ -58,5 +64,32 @@ class CategoryListView(APIView):
 
     def get(self, request):
         categories = ProductCategory.objects.values()
+        count = Product.objects.filter().count()
 
-        return Response({'categories':categories})
+        return Response({
+            'categories':categories,
+            'counts':count
+        })
+
+
+
+class CategoryDetailView(DetailView):
+    model = ProductCategory
+    template_name = 'product/category.html'
+
+
+class CategoryUpdateView(UpdateView):
+    model = ProductCategory
+    template_name = 'product/category_edit.html'
+    form_class = AddCategoryForm
+    success_url  = reverse_lazy('categories')
+
+    # def get_object(self):
+    #     id_ = self.kwargs.get("id")
+    #     return get_object_or_404(ProductCategory, category_id=id_)
+
+
+class CategoryDeleteView(DeleteView):
+    model = ProductCategory
+    template_name = 'product/category_delete.html'
+    success_url = reverse_lazy('categories')
